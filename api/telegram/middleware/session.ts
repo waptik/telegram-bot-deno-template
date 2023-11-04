@@ -8,6 +8,7 @@ import {
 import { DenoKVAdapter } from 'https://deno.land/x/grammy_storages@v2.3.2/denokv/src/mod.ts';
 
 const session = new Composer<GrammyContext>();
+const kv = await Deno.openKv()
 
 function createInitialSession(): GrammySession {
 	return {

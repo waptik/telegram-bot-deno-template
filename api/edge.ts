@@ -14,7 +14,6 @@ import * as middlewares from '$server/middlewares/mod.ts';
 import { grammy } from '$grammy/bot.ts';
 import config from '$utils/config.ts';
 import { isDev } from '$utils/misc.ts';
-import { report } from '$grammy/helpers/report.ts';
 
 const port = 8080;
 
@@ -60,7 +59,6 @@ app.addEventListener('listen', async ({ hostname, port, serverType }) => {
 
 	// see https://github.com/oakserver/oak/issues/483#issuecomment-1060109388
 	app.addEventListener('error', (e) => {
-		report(e.error, 'oak error');
 		console.error('Oak.error', e.error);
 		console.error('Oak.filename', e.filename);
 		console.error('Oak.message', e.message);

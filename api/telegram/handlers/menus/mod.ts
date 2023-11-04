@@ -1,6 +1,6 @@
 import { GrammyContext } from '$grammy/context.ts';
 import { Composer } from 'grammy';
-import { isPrivate } from '$grammy/helpers/checkChatType.ts';
+import { isPrivate } from '$grammy/helpers/mod.ts';
 import { magicMenu } from '$grammy/handlers/menus/magic.menu.ts';
 
 const composer = new Composer<GrammyContext>();

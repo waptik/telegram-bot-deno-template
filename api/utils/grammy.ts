@@ -26,19 +26,18 @@ export const listOfCommands: Array<{
 	command: string;
 	description: string;
 	show: boolean;
-	// chats?: Array<number>;
 	for?: 'all' | 'admins' | 'private';
 }> = [
 	{
 		command: 'start',
-		description: '👤 Account information',
+		description: 'Initialize bot',
 		show: true,
 		for: 'private',
 	},
 	{
-		command: 'send_welcome_message',
-		description: '🥳 Send welcome message to all users',
-		show: false,
-		for: 'admins',
+		command: 'quiz',
+		description: 'Simple but interesting',
+		show: true,
+		for: 'private',
 	},
 ];

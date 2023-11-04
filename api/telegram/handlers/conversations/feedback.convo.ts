@@ -2,10 +2,10 @@ import { Composer } from 'grammy';
 import { createConversation } from 'grammy_conversations';
 
 import { GrammyContext, GrammyConversation } from '$grammy/context.ts';
-import { handleErrorMessage } from '$grammy/helpers/handleErrors.ts';
+import { handleErrorMessage } from '$grammy/helpers/mod.ts';
 import { getProfileLink } from '$utils/grammy.ts';
 
-async function trySurvey(convo: GrammyConversation, ctx: GrammyContext) {
+async function tryQuiz(convo: GrammyConversation, ctx: GrammyContext) {
    
     let answer = ''
 
@@ -69,7 +69,6 @@ async function trySurvey(convo: GrammyConversation, ctx: GrammyContext) {
             const year = new Date().toLocaleTimeString('en', {year: 'numeric'}).split(',')[0]
 
             if (answer === year) {
-                await ctx.reply(`*Celebrating* Yay, you rock!`)
                 answer=''
                 break;
             }
@@ -96,6 +95,6 @@ async function trySurvey(convo: GrammyConversation, ctx: GrammyContext) {
 
 const feedbackConversation = new Composer<GrammyContext>();
 
-feedbackConversation.use(createConversation(trySurvey, 'survey'));
+feedbackConversation.use(createConversation(tryQuiz, 'quiz'));
 
 export default feedbackConversation;

@@ -2,6 +2,7 @@ import { getFullName } from '$utils/grammy.ts';
 
 import { GrammyContext } from '$grammy/context.ts';
 import { Composer } from 'grammy';
+import { magicMenu } from "$grammy/handlers/menus/magic.menu.ts";
 
 const composer = new Composer<GrammyContext>();
 
@@ -16,7 +17,7 @@ composer.command('start', async (ctx) => {
 					'',
 				)
 			} and welcome!\n\nYou can use the /help command to see the list of available commands.`,
-			{ reply_markup: { remove_keyboard: true } },
+			{ reply_markup: magicMenu },
 		);
 	} catch (e) {
 		const msg = handleErrorMessage(e);
@@ -24,12 +25,12 @@ composer.command('start', async (ctx) => {
 	}
 });
 
-composer.command('survey', async ctx =>{
+composer.command('quiz', async ctx =>{
 	await ctx.reply(
-		'You are about to start a survey. Use /cancel if you want to cancel the process',
+		'You are about to start a quiz. Use /cancel if you want to cancel the process',
 	);
 	
-	await ctx.conversation.enter('survey');
+	await ctx.conversation.enter('quiz');
 })
 
 export default composer;

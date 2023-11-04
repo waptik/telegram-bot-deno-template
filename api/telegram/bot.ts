@@ -12,9 +12,7 @@ import conversationComposer from '$grammy/handlers/conversations/mod.ts';
 import ping from '$grammy/middleware/ping.ts';
 import session from '$grammy/middleware/session.ts';
 import { listOfCommands } from '$utils/grammy.ts';
-import { isPrivate } from '$grammy/helpers/checkAdmin.ts';
-import { report } from '$grammy/helpers/report.ts';
-import { botInfo } from '$utils/constants.ts';
+import { isPrivate } from '$grammy/helpers/mod.ts';
 import menus from '$grammy/handlers/menus/mod.ts';
 
 export const grammy = new Bot<GrammyContext>(config.tokens.telegram);
@@ -61,31 +59,8 @@ grammy.api
 		console.error('Failed to upload default commands to BotFather', e)
 	);
 
-grammy.api
-	.setMyCommands(
-		listOfCommands.filter((c) => c.for !== 'private'),
-		{
-			scope: {
-				type: 'chat_administrators',
-				chat_id: botInfo.topics[0],
-			},
-		},
-	)
-	.then(() => {
-		console.log(
-			'commands for `chat_administrators` have been uploaded to BotFather',
-		);
-	})
-	.catch((e) =>
-		console.error(
-			'Failed to upload `chat_administrators` commands to BotFather',
-			e,
-		)
-	);
-
 grammy.catch((botError) => {
 	const ctx = botError.ctx;
-	report(botError, botError.name);
 
 	console.error(`Error while handling update ${ctx.update.update_id}:`);
 	const e = botError.error;

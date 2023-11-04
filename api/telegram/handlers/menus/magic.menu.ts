@@ -1,6 +1,5 @@
 import { GrammyContext } from '$grammy/context.ts';
 import { Menu } from 'grammy_menu';
-import { creditsList, parseAmountToCharge } from '$utils/amount.ts';
 
 export const magicMenu = new Menu<GrammyContext>('magic-menu').text(
 	`Markdown Image`,
