@@ -3,8 +3,16 @@
 import '$std/dotenv/load.ts';
 import './bot.ts';
 
-import { error } from '$utils/error.ts';
 import { gte, parse } from '$std/semver/mod.ts';
+
+ function printError(message: string) {
+	console.error(`%cerror%c: ${message}`, 'color: red; font-weight: bold', '');
+}
+
+ function error(message: string): never {
+	printError(message);
+	Deno.exit(1);
+}
 
 const MIN_DENO_VERSION = "1.31.0";
 
