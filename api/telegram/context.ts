@@ -1,5 +1,3 @@
-import { XiVoice } from '$utils/elevenlabs/api.ts';
-import { Semaphore } from 'asyncio';
 import { Context, SessionFlavor } from 'grammy';
 import { Conversation, ConversationFlavor } from 'grammy_conversations';
 import type { ParseModeFlavor } from 'grammy_parse_mode';
