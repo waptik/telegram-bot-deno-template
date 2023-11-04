@@ -1,0 +1,54 @@
+{
+    "tasks": {
+        "check": "deno cache --check=all api/edge.ts",
+        "flint": "deno fmt && deno lint",
+        "dev": "deno run --unstable -A --watch=api/telegram/,api/server/ ./api/dev.ts",
+        "edge": "deno run --unstable -A ./api/edge.ts",
+        "bot": "deno run --unstable -A --watch=api/telegram/,api/utils/ ./api/bot.ts",
+        "refresh": "deno cache --reload ./api/edge.ts",
+        "gen_secret": "openssl rand -base64 24" // generate random secret strings
+    },
+    "imports": {
+        "$utils/": "./api/utils/",
+        "$grammy/": "./api/telegram/",
+        "$server/": "./api/server/",
+        "$types/": "./api/types/",
+        "$std/": "https://deno.land/std@0.204.0/",
+        "deps": "./deps.deno.ts",
+        "oak": "https://deno.land/x/oak@v12.1.0/mod.ts",
+        "grammy": "https://deno.land/x/grammy@v1.19.2/mod.ts",
+        "grammy_types": "https://deno.land/x/grammy@v1.19.2/types.ts",
+        "grammy_conversations": "https://deno.land/x/grammy_conversations@v1.1.2/mod.ts",
+        "grammy_parse_mode": "https://deno.land/x/grammy_parse_mode@1.8.1/mod.ts",
+        "grammy_menu": "https://deno.land/x/grammy_menu@v1.2.1/mod.ts"
+    },
+    "lint": {
+        "rules": {
+            "tags": [
+                "recommended"
+            ],
+            "include": [
+                "ban-untagged-todo"
+            ],
+            "exclude": [
+                "no-unused-vars"
+            ]
+        }
+    },
+    "fmt": {
+        "useTabs": true,
+        "lineWidth": 80,
+        "indentWidth": 4,
+        "singleQuote": true,
+        "proseWrap": "preserve"
+    },
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "dom.asynciterable",
+            "deno.ns",
+            "deno.unstable"
+        ]
+    }
+}
