@@ -1,4 +1,5 @@
 import { getFullName } from '$utils/grammy.ts';
+import { handleErrorMessage } from '$grammy/helpers/mod.ts';
 
 import { GrammyContext } from '$grammy/context.ts';
 import { Composer } from 'grammy';
